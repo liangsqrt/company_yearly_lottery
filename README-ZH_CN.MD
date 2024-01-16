@@ -54,6 +54,7 @@ npm run build
 npm run serve
 
 # 开发调试
+export NODE_OPTIONS=--openssl-legacy-provider (if node<=16)
 npm run dev
 
 ```

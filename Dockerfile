@@ -8,15 +8,16 @@ RUN npm install -g npm@9.6.2
 LABEL maintainer="YIN"
 
 # Add the application source code to the container
-ADD lottery.tar.gz  /
+# ADD lottery.tar.gz  /
 
 # Set the working directory to the root directory of the application
 WORKDIR /lottery
+COPY . .
 
 # Set the ownership of the application directory to root
 RUN chown -R root /lottery \
     # Remove the line that opens the default browser when starting the server
-    && sed -i '/openBrowser/ d' ./server/server.js \
+    && sed -i '/openBrowser/ d' /lottery/server/server.js \
     # Install dependencies for the server and product directories
     && cd server && npm install \
     && cd ../product && npm install \
@@ -30,4 +31,4 @@ EXPOSE 8080
 WORKDIR /lottery/product
 
 # Start the server
-CMD ["npm", "run", "serve"]
+# CMD ["npm", "run", "serve"]
