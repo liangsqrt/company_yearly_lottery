@@ -7,9 +7,9 @@ let prizes;
 const DEFAULT_MESS = [
   "我是该抽中一等奖还是一等奖呢，纠结ing...",
   "听说要提前一个月吃素才能中大奖喔！",
-  "好想要一等奖啊！！！",
-  "一等奖有没有人想要呢？",
-  "五等奖也不错，只要自己能中奖就行",
+  "好想要中奖啊！！！",
+  // "一等奖有没有人想要呢？",
+  // "五等奖也不错，只要自己能中奖就行",
   "祝大家新年快乐！",
   "中不中奖不重要，大家吃好喝好。",
   "新年，祝福大家事事顺遂。",
@@ -21,7 +21,7 @@ const DEFAULT_MESS = [
 let lastDanMuList = [];
 
 let prizeElement = {},
-  lasetPrizeIndex = 0;
+  lasetPrizeIndex = 1;
 class DanMu {
   constructor(option) {
     if (typeof option !== "object") {

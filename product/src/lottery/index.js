@@ -491,7 +491,7 @@ function render() {
   renderer.render(scene, camera);
 }
 
-function selectCard(duration = 600) {
+function showWinner(duration = 600) {
   rotate = false;
   let width = 70,
     tag = -(currentLuckys.length - 1) / 2,
@@ -647,18 +647,19 @@ function lottery() {
       leftCount = basicData.leftUsers.length,
       leftPrizeCount = currentPrize.count - (luckyData ? luckyData.length : 0);
 
+    // 奖品多了，剩下的再抽
     if (leftCount < perCount) {
       bubbleNotice("剩余参与抽奖人员不足，现在重新设置所有人员可以进行二次抽奖！");
       basicData.leftUsers = basicData.users.slice();
       leftCount = basicData.leftUsers.length;
     }
-
+    // 抽奖开始
     for (let i = 0; i < perCount; i++) {
       let luckyId = random(leftCount);
       currentLuckys.push(basicData.leftUsers.splice(luckyId, 1)[0]);
       leftCount--;
       leftPrizeCount--;
-
+      // 将中奖人员的显示信息随机放在20个里
       let cardIndex = random(TOTAL_CARDS);
       while (selectedCardIndex.includes(cardIndex)) {
         cardIndex = random(TOTAL_CARDS);
@@ -671,7 +672,7 @@ function lottery() {
     }
 
     // console.log(currentLuckys);
-    selectCard();
+    showWinner();
   });
 }
 

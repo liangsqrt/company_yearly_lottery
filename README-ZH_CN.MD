@@ -39,6 +39,9 @@ git clone https://github.com/moshang-xc/lottery.git
 
 cd lottery
 
+# node<=16适配
+export NODE_OPTIONS=--openssl-legacy-provider
+
 # 服务端插件安装
 cd server
 npm install
@@ -54,7 +57,6 @@ npm run build
 npm run serve
 
 # 开发调试
-export NODE_OPTIONS=--openssl-legacy-provider (if node<=16)
 npm run dev
 
 ```
